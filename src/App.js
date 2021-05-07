@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "twin.macro";
+import AppHeader from "./Components/AppHeader";
+import CountriesList from "./Components/CountriesList";
+import { ApiContextProvider } from "./utils/context/ApiContext";
+import Filter from "./Components/Filter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppHeader>
+        <h1 tw="font-extrabold text-2xl py-6 px-5">Country Finder</h1>
+      </AppHeader>
+      <ApiContextProvider>
+        <Filter>
+          {(filterKey) => <CountriesList filterKey={filterKey} />}
+        </Filter>
+      </ApiContextProvider>
     </div>
   );
 }
