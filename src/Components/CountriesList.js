@@ -5,9 +5,10 @@ import compose from "@ramda/compose";
 import withCountries from "../utils/hoc/withCountries";
 import CountryCard from "./CountryCard";
 import CardContainer from "./CardContainer";
+import Loading from "./Loading";
 
 const CountriesList = ({ countries, filterKey = "" }) => {
-  const { list } = countries;
+  const { list, loading } = countries;
 
   useEffect(() => {
     console.log({ filterKey });
@@ -15,17 +16,23 @@ const CountriesList = ({ countries, filterKey = "" }) => {
   }, [filterKey]);
 
   return (
-    <CardContainer>
-      {list
-        .filter((country) =>
-          country.name.toLowerCase().includes(filterKey.toLowerCase())
-        )
-        .map((country) => (
-          <LazyLoad height={400} key={country.name}>
-            <CountryCard country={country} />
-          </LazyLoad>
-        ))}
-    </CardContainer>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <CardContainer>
+          {list
+            .filter((country) =>
+              country.name.toLowerCase().includes(filterKey.toLowerCase())
+            )
+            .map((country) => (
+              <LazyLoad height={400} key={country.name}>
+                <CountryCard country={country} />
+              </LazyLoad>
+            ))}
+        </CardContainer>
+      )}
+    </>
   );
 };
 
