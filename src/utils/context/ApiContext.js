@@ -1,14 +1,12 @@
 import {createContext} from "react";
-
-//const CONVERT_ENDPOINT_KEY = '3c78114ca7e003318350';
-//const ENDPOINT = 'https://free.currconv.com/api/v7/convert'
-//const generateUrl = () => {}
+import {CURRENCY_CONVERT_ENDPOINT, COUNTRIES_ENDPOINT} from "../../constants";
 
 const value = {
-    convertEndpoint: 'https://free.currconv.com/api/v7/convert',
-    convertAccessKey: '3c78114ca7e003318350',
-    countriesEndpoint: 'https://restcountries.eu/rest/v2/all?fields=name;capital;population;flag;currencies'
+    convertEndpoint: CURRENCY_CONVERT_ENDPOINT,
+    convertAccessKey: process.env.REACT_APP_CURRENCY_CONVERT_ACCESS_KEY,
+    countriesEndpoint: COUNTRIES_ENDPOINT
 }
+
 const ApiContext = createContext(value);
 
 export const ApiContextProvider = ({children}) => {
