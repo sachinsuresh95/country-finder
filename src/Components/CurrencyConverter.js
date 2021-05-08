@@ -11,7 +11,7 @@ const InputWrapper = styled.div`
 
 const CurrencyConverter = ({ from, to, toName }) => {
   const [value, setValue] = useState(0);
-  const {convertAccessKey} = useContext(ApiContext);
+  const { convertAccessKey } = useContext(ApiContext);
   const { result, convert } = useCurrencyConversion(from, to, convertAccessKey);
   return (
     <form
