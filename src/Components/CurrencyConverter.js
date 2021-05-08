@@ -1,6 +1,5 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import tw, { styled } from "twin.macro";
-import ApiContext from "../utils/context/ApiContext";
 import { useCurrencyConversion } from "../utils/hooks/useCurrencyConversion";
 import Button from "./atoms/Button";
 import TextInput from "./atoms/TextInput";
@@ -11,8 +10,7 @@ const InputWrapper = styled.div`
 
 const CurrencyConverter = ({ from, to, toName }) => {
   const [value, setValue] = useState(0);
-  const { convertAccessKey } = useContext(ApiContext);
-  const { result, convert } = useCurrencyConversion(from, to, convertAccessKey);
+  const { result, convert } = useCurrencyConversion(from, to);
   return (
     <form
       onSubmit={(e) => {

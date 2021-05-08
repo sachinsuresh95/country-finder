@@ -15,7 +15,6 @@ const CountriesList = ({ countries, filterKey = "" }) => {
   );
 
   useEffect(() => {
-    console.log({ filterKey });
     forceCheck();
   }, [filterKey]);
 

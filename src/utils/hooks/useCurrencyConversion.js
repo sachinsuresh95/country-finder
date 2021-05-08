@@ -2,8 +2,10 @@ import { useState, useContext } from "react";
 import ApiContext from "../context/ApiContext";
 import { get } from "../api";
 
-export const useCurrencyConversion = (from, to, accessKey) => {
-  const { convertEndpoint: endpoint } = useContext(ApiContext);
+export const useCurrencyConversion = (from, to) => {
+  const { convertEndpoint: endpoint, convertAccessKey: accessKey } = useContext(
+    ApiContext
+  );
   const [result, setResult] = useState(0);
   const queryParams = {
     q: `${from}_${to}`,
