@@ -25,7 +25,7 @@ const CountriesList = ({ countries, filterKey = "" }) => {
         <Loading />
       ) : (
         <CardContainer>
-      {listToDisplay.length ? (
+          {listToDisplay.length ? (
             listToDisplay.map((country) => (
               <LazyLoad height={400} key={country.name}>
                 <CountryCard country={country} />
