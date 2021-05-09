@@ -39,4 +39,4 @@ const CountriesList = ({ countries, filterKey = "" }) => {
   );
 };
 
-export default compose(withCountries, debounce(1000))(CountriesList);
+export default compose(withCountries, debounce(500))(CountriesList);

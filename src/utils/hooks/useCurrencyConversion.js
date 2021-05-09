@@ -14,7 +14,7 @@ export const useCurrencyConversion = (from, to) => {
   const convert = (value) => {
     get(
       `${endpoint}?${new URLSearchParams(queryParams).toString()}`
-    ).then(({ data: { results } }) =>
+    ).then(({ results }) =>
       setResult((value * results[`${from}_${to}`].val).toFixed(2))
     );
   };

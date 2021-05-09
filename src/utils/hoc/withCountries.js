@@ -7,8 +7,8 @@ const withCountries = (Component) => {
     const [countries, setCountries] = useState({ loading: true, list: [] });
     const { countriesEndpoint } = useContext(ApiContext);
     useEffect(() => {
-      get(countriesEndpoint).then(({ data }) =>
-        setCountries({ list: data, loading: false })
+      get(countriesEndpoint).then((list) =>
+        setCountries({ list, loading: false })
       );
     }, [countriesEndpoint]);
 
